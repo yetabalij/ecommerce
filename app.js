@@ -1,7 +1,7 @@
 // importing required packages
 const express = require("express");
 const morgan = require("morgan");
-const route = require("./router/route");
+const userRoute = require("./routes/user");
 
 const app = express();
 
@@ -9,6 +9,6 @@ const app = express();
 app.use(morgan("dev"));
 
 //router middlewares
-app.use("/api", route);
+app.use("/api", userRoute);
 
 module.exports = app;
