@@ -1,7 +1,9 @@
 //importing required packages
 const app = require("./app");
-const config = require("./config/config");
+require("dotenv").config();
 
-app.listen(config.PORT, () => {
-  console.log(`application started to: https://localhost:${config.PORT}`);
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+  console.log(`application started to: https://localhost:${port}`);
 });
