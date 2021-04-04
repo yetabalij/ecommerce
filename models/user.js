@@ -1,9 +1,9 @@
 //importing required packages
 const mongoose = require("mongoose");
-const ctypto = require("crypto");
-const uuidv1 = require(uuid / v1);
+const crypto = require("crypto");
+const { v4: uuidv4 } = require("uuid");
 
-const userSchema = new mongoose.Schema(
+const userSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       tirm: true,
       required: true,
-      unique: true,
+      unique: 32,
     },
     hased_password: {
       type: String,
@@ -41,12 +41,12 @@ const userSchema = new mongoose.Schema(
 //virtual fields
 userSchema
   .virtual("password")
-  .set((password) => {
+  .set(function (password) {
     this._password = password;
-    this.Salt = uuidv1();
+    this.Salt = uuidv4();
     this.hased_password = this.encryptPassword(password);
   })
-  .get(() => {
+  .get(function () {
     return this._password;
   });
 
