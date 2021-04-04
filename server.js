@@ -9,8 +9,9 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
   })
-  .then(() => {
-    console.log("Database connected");
+  .then(() => console.log("DB Connection Successfull"))
+  .catch((err) => {
+    console.error(err);
   });
 
 const port = process.env.PORT || 5000;
